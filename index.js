@@ -30,7 +30,7 @@ fastify.get('/:imageId/:scale', async function (request, reply) {
   // relative resize
   // skip if it's 1x
   else if (scaleFactors[0] != '1') {
-    const scaleFactor = scaleFactors[0];
+    const scaleFactor = Number(scaleFactors[0]);
     const metadata = await image.metadata();
     // console.log(`Resized relatively by ${scaleFactor}`);
 
