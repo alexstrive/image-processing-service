@@ -1,7 +1,7 @@
 const sharp = require('sharp');
 
 const fastify = require('fastify')({
-  logger: false,
+  logger: true,
 });
 
 const staticDir = 'static';
@@ -11,7 +11,7 @@ const staticDir = 'static';
 // or it's custom 100x200, 200x300, 300x100 and so on
 fastify.get('/:imageId/:scale', async function (request, reply) {
   const { imageId, scale } = request.params;
-  const image = sharp(`${staticDir}/1.jpg`);
+  const image = sharp(`${staticDir}/${imageId}.jpg`);
 
   if (!image) {
     reply.send(`Image with ID ${imageId} is not found.`);
@@ -45,7 +45,7 @@ fastify.get('/:imageId/:scale', async function (request, reply) {
 });
 
 // Run the server
-fastify.listen(3000, function (err, address) {
+fastify.listen(3000, '0.0.0.0', function (err, address) {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
