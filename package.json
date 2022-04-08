@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autocannon": "^7.8.1",
+    "commander": "^9.1.0",
     "fastify": "^3.28.0",
     "sharp": "^0.30.3"
   }
